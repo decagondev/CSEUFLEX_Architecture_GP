@@ -22,7 +22,50 @@
 
 # # Printing a value as binary
 
-# print("{num:b}".format(num))      # 1111011, format method
+# print("{:b}".format(num))      # 1111011, format method
+
+"""
+take input as a string
+1111011
+take input string 
+7b
+
+turn in to a list
+[1, 1, 1, 1, 0, 1, 1]
+[7, b]
+
+reverse the list
+[1, 1, 0, 1, 1, 1, 1]
+[b, 7]
+
+multiply each element by its power of 2 respectively
+1 * 1
+1 * 2
+0 * 4
+1 * 8
+1 * 16
+1 * 32
+1 * 64
+
+b * 1 => 11
+7 * 16 => 112
+
+# taken the numbers and addedthem together
+1 + 2 + 0 + 8 + 16 + 32 + 64
+3 + 8 + 16 + 32 + 64
+11 + 16 + 32 + 64
+27 + 32 + 64
+59 + 64
+
+11 + 112
+
+
+# returning a result in decimal
+123
+
+123
+
+"""
 
 # # Converting a decimal number in a string to a value
 
@@ -47,7 +90,7 @@
 
 # Conversion Python code:
 
-string1 = "10101010"
+# string1 = "10101010"
 
 # 1 * 128
 # 0 * 64
@@ -107,8 +150,24 @@ string1 = "10101010"
 # 2
 # 128 + 32 + 8 + 2
 
-from codecs import decode
 def to_decimal(num_string, base):
-    pass
+    # set a starting value
+    value = 0
+    # convert string in to a list
+    digit_string = list(num_string)
 
-print(to_decimal("1100", 2))  # => 12
+    # reverse the list
+    digit_string.reverse()
+
+    # iterate over the list
+    for i in range(len(digit_string)):
+        multiplyer = (base ** i)
+        current_value_at_index = int(digit_string[i], base)
+
+        value += current_value_at_index * multiplyer
+
+    return value
+
+print(to_decimal("7b", 16))  # => 123
+print(to_decimal("010111010110101", 2))  # => 123
+
