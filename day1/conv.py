@@ -107,6 +107,7 @@ string1 = "10101010"
 # 2
 # 128 + 32 + 8 + 2
 
+from codecs import decode
 def to_decimal(num_string, base):
     pass
 
