@@ -36,10 +36,10 @@ operand_size == 0b00000010 # => 2
 add_to_pc = operand_size + 1
 
 # FETCH
-CMD = 0b10000010
+ir = 0b10000010
 
 # DECODE
-add_to_pc = (CMD >> 6) + 1
+instruction_length = (ir >> 6) + 1
 
 if IR == LDI:
     # do the ldi thing
