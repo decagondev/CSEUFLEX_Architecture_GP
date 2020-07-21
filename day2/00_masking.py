@@ -1,5 +1,15 @@
 # lets talk about bitshifting
-
+# Example of shifting LDI right by 6 bits:
+#
+# 10000010
+# 01000001
+# 00100000
+# 00010000
+# 00001000
+# 00000100
+# 00000010
+#
+# The result is 0b10 or 2, the number of operands for LDI.
 LDI = 0b10000010
 ADD = 0b00000000
 # 000000AA
