@@ -8,23 +8,42 @@
 # 00001000
 # 00000100
 # 00000010
+
+#  00000010
 #
 # The result is 0b10 or 2, the number of operands for LDI.
+"""
+AABCDDDD
+10000010 => 130
+11000000 &
+----------
+10000000 = > 128
+
+10000000 >> 6
+
+00000010 => 2 => number of operands
+
+inc_pc? = 1 + number of operands
+
+
+"""
+128 + 2 = 130
 LDI = 0b10000010
 ADD = 0b00000000
 # 000000AA
-bob = LDI >> 6
-bob == 0b00000010 # => 2
-add_to_pc = bob + 1
+operand_size = LDI >> 6
+operand_size == 0b00000010 # => 2
+add_to_pc = operand_size + 1
 
 # FETCH
-IR = 0b10000010
+CMD = 0b10000010
 
 # DECODE
-add_to_pc = (IR >> 6) + 1
+add_to_pc = (CMD >> 6) + 1
 
 if IR == LDI:
     # do the ldi thing
+    add_to_pc = 3
     pass
 elif IR == ADD:
     # do the add thing
