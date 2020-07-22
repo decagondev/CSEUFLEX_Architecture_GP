@@ -18,12 +18,13 @@ POP = 8
 # lets make a model of memory to hold our program
 memory = [0] * 256
 
-register = [0] * 8
+register = [0] * 8 # self.reg[poodle]
 
 # TODO: Stack Pointer (R7) as per specs
 # index of the registers list 
+SP = 7
 # to use to store where the top of the stack is
-
+register[SP] = 244 # F4
 
 
 
@@ -108,11 +109,33 @@ while running:
         register[reg_a] += register[reg_b]
         op_size = 3
 
-    # TODO: push
+    #  push
+    elif command == PUSH:
+        # setup
+        index_of_the_register = memory[pc + 1]
+        val = register[index_of_the_register]
+
+        # do the push
+        register[SP] -= 1
+        memory[register[SP]] = val
+
+        op_size = 2
 
 
+    #  pop
+    elif command == POP:
+        # setup
+        index_of_the_register = memory[pc + 1] # the register => 3
+        val = memory[register[SP]] # memory[F3] => 89 => val = 89
 
-    # TODO: pop
+        # do the pop
+        register[index_of_the_register] = val # register[3] = 89
+
+        register[SP] += 1
+
+        op_size = 2
+
+
     
     else:
         print(f"Invalid Instruction: {command}")
